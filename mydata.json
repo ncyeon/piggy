@@ -1,0 +1,180 @@
+{
+  "budget": [
+    {
+      "id": "1",
+      "date": "2025-04-01",
+      "type": "income",
+      "category": "월급",
+      "amount": 3000000,
+      "memo": "4월 급여"
+    },
+    {
+      "id": "2",
+      "date": "2025-04-02",
+      "type": "expense",
+      "category": "식비",
+      "amount": 15000,
+      "memo": "점심식사"
+    },
+    {
+      "id": "920a",
+      "date": "2025-04-06",
+      "type": "income",
+      "category": "투자수익",
+      "amount": 7000000,
+      "memo": "바낸 롱친거"
+    },
+    {
+      "id": "6ef9",
+      "date": "2025-04-06",
+      "type": "expense",
+      "category": "주거비",
+      "amount": 5000000,
+      "memo": "월세"
+    },
+    {
+      "id": "f99a",
+      "type": "income",
+      "category": "부동산수입",
+      "amount": 5300000,
+      "memo": "부동산 수입입니다",
+      "date": "2025-04-03"
+    },
+    {
+      "id": "8d20",
+      "type": "expense",
+      "category": "통신비",
+      "amount": 110000,
+      "memo": "통신비에용",
+      "date": "2025-04-04"
+    },
+    {
+      "id": "ea01",
+      "type": "expense",
+      "category": "식비",
+      "amount": 15900,
+      "memo": "밥먹었어용",
+      "date": "2025-04-05"
+    },
+    {
+      "id": "386c",
+      "type": "income",
+      "category": "기타수입",
+      "amount": 100000,
+      "memo": "ㅁㅁㅁㅁ",
+      "date": "2025-04-06"
+    },
+    {
+      "id": "4587",
+      "date": "2025-04-02",
+      "type": "expense",
+      "category": "의료비",
+      "amount": 12500,
+      "memo": "아야했어요"
+    },
+    {
+      "id": "2c8a",
+      "type": "expense",
+      "category": "통신비",
+      "amount": 120000,
+      "memo": "aaa",
+      "date": "2025-04-09"
+    },
+    {
+      "id": "2c89",
+      "type": "expense",
+      "category": "저축",
+      "amount": 200000,
+      "memo": "돈++",
+      "date": "2025-04-10"
+    }
+  ],
+  "incomeCategories": [
+    {
+      "id": "1",
+      "name": "월급"
+    },
+    {
+      "id": "2",
+      "name": "용돈"
+    },
+    {
+      "id": "3",
+      "name": "이자"
+    },
+    {
+      "id": "4",
+      "name": "투자수익"
+    },
+    {
+      "id": "5",
+      "name": "기타수입"
+    },
+    {
+      "id": "dc6d",
+      "name": "부동산수입"
+    },
+    {
+      "id": "b83d",
+      "name": "ㅁㅁㅁㅁㅁ"
+    }
+  ],
+  "expenseCategories": [
+    {
+      "id": "1",
+      "name": "식비"
+    },
+    {
+      "id": "2",
+      "name": "교통비"
+    },
+    {
+      "id": "3",
+      "name": "주거비"
+    },
+    {
+      "id": "4",
+      "name": "통신비"
+    },
+    {
+      "id": "5",
+      "name": "의료비"
+    },
+    {
+      "id": "6",
+      "name": "문화생활"
+    },
+    {
+      "id": "7",
+      "name": "교육비"
+    },
+    {
+      "id": "8",
+      "name": "저축"
+    },
+    {
+      "id": "9",
+      "name": "기타지출"
+    },
+    {
+      "id": "220c",
+      "name": "배달"
+    },
+    {
+      "id": "b61e",
+      "name": "정기구독"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "홍길동",
+      "email": "hong@example.com"
+    }
+  ],
+  "goals": [
+    {
+      "amount": 500000
+    }
+  ]
+}
