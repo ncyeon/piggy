@@ -1,5 +1,25 @@
 <template>
-  <div class="goal-box">
+  <!-- 돼지 누르면 모달 띄우기 -->
+  <SetModal
+    v-if="isSetModalVisible"
+    :show="isSetModalVisible"
+    @close="isSetModalVisible = false"
+    @submit="handleGoalSubmit"
+  />
+
+  <div v-if="goalAmount === 0" class="container">
+    <img
+      :src="noGoalImage"
+      alt="nogoal"
+      @click="isSetModalVisible = true"
+      style="cursor: pointer"
+    />
+    <h2 style="font-family: 'Pretendard', sans-serif; font-weight: bold">
+      목표 금액이 없습니다!
+    </h2>
+  </div>
+
+  <div v-else class="goal-box">
     <h2><b>저축 목표</b></h2>
     <br />
     <div class="mb-3 fw-bold">
@@ -45,7 +65,7 @@
       {{ messageText }}
     </div>
 
-    <!-- 모달 -->
+    <!-- 거래 상세 보여주는 모달 -->
     <SavingModal
       :show="isModalVisible"
       :savings="savingsHistory"
@@ -58,11 +78,14 @@
 import { ref, computed, onMounted } from 'vue';
 import { useBudgetStore } from '@/stores/budget.js';
 import SavingModal from '@/components/SavingModal.vue';
-// import '@fortawesome/fontawesome-free/css/all.min.css';
+import SetModal from '@/components/SetGoalModal.vue';
+import noGoalImage from '@/assets/images/nonogoal.jpeg';
 
 const store = useBudgetStore();
 const currentAmount = ref(0);
-const goalAmount = ref(500000);
+const goalAmount = computed(() => store.goalAmount);
+// const goalAmount = computed(() => store.goalAmount);
+
 // --> 이게 반영이 되는게 아님,, 그럼 어디서 ?...
 
 const animatedPercentage = ref(0);
@@ -71,6 +94,7 @@ const showMessage = ref(false);
 const messageText = ref('');
 
 const isModalVisible = ref(false); // 모달 표시 여부
+const isSetModalVisible = ref(false);
 const savingsHistory = computed(() =>
   store.budget.filter(
     (item) => item.type === 'expense' && item.category === '저축'
@@ -122,22 +146,26 @@ const animatePercentage = () => {
   }, 16);
 };
 
+const handleGoalSubmit = (amount) => {
+  store.setGoalAmount(amount); // store에 저장
+  isSetModalVisible.value = false; // 모달 닫기
+  calculateSavings();
+  animatePercentage();
+};
+
 onMounted(async () => {
-  const response = await fetch('/mydata.json');
-  const mydata = await response.json();
+  // const response = await fetch('/mydata.json');
+  // const mydata = await response.json();
 
   await store.fetchBudget(); // axios로 json-server 불러옴
-  goalAmount.value = store.goalAmount;
-  // console.log('goalAmount:', goalAmount.value);
-  mydata.forEach((item) => {
-    if (item.type === 'expense' && item.category === '저축') {
-      store.budget.push(item);
-    }
-  });
+  // goalAmount.value = store.goalAmount;
+  // mydata.forEach((item) => {
+  //   if (item.type === 'expense' && item.category === '저축') {
+  //     store.budget.push(item);
+  //   }
+  // });
 
   calculateSavings();
-  // console.log('currentAmount:', currentAmount.value);
-  // console.log('percentage:', percentage.value);
   animatePercentage();
 });
 </script>
@@ -178,6 +206,10 @@ onMounted(async () => {
   font-weight: bold;
   font-size: 1rem;
   animation: fadeInOut 2s ease-in-out;
+}
+.container {
+  text-align: center;
+  margin-top: 100px;
 }
 
 @keyframes fadeInOut {
